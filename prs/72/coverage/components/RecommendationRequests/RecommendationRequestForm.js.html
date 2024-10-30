@@ -230,9 +230,7 @@
 <a name='L165'></a><a href='#L165'>165</a>
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
-<a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a>
-<a name='L170'></a><a href='#L170'>170</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L168'></a><a href='#L168'>168</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,11 +252,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -406,178 +402,176 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 &nbsp;
 function <span class="fstat-no" title="function not covered" >RecommendationRequestForm(</span>{
-    initialContents,
-    submitAction,
-    buttonLabel = <span class="branch-0 cbranch-no" title="branch not covered" >"Create",</span>
-  }) {
-    // Stryker disable all
-    const {
-      register,
-      formState: { errors },
-      handleSubmit,
-    } = <span class="cstat-no" title="statement not covered" >useForm({ defaultValues: initialContents || {} });</span>
-    // Stryker restore all
-  
-    const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
-  
-    const isodate_regex =
+  initialContents,
+  submitAction,
+  buttonLabel = <span class="branch-0 cbranch-no" title="branch not covered" >"Create",</span>
+}) {
+  // Stryker disable all
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = <span class="cstat-no" title="statement not covered" >useForm({ defaultValues: initialContents || {} });</span>
+  // Stryker restore all
+&nbsp;
+  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+&nbsp;
+  const isodate_regex =
 <span class="cstat-no" title="statement not covered" >    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;</span>
 &nbsp;
-    const boolean_regex =
-<span class="cstat-no" title="statement not covered" >    /(true|false)/i</span>
-  
-<span class="cstat-no" title="statement not covered" >    return (</span>
-      &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
-        &lt;Row&gt;
+  const boolean_regex = <span class="cstat-no" title="statement not covered" >/(true|false)/i;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return (</span>
+    &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="RecommendationRequestForm-requesterEmail"
+              id="requesterEmail"
+              type="text"
+              isInvalid={Boolean(errors.requesterEmail)}
+              {...register("requesterEmail", {
+                required: "Requester Email is required.",
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.requesterEmail?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+&nbsp;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="professorEmail"&gt;Professor Email&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="RecommendationRequestForm-professorEmail"
+              id="professorEmail"
+              type="text"
+              isInvalid={Boolean(errors.professorEmail)}
+              {...register("professorEmail", {
+                required: "Professor Email is required.",
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.professorEmail?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+&nbsp;
+      &lt;Row&gt;
+        {initialContents &amp;&amp; (
           &lt;Col&gt;
             &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
+              &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
               &lt;Form.Control
-                data-testid="RecommendationRequestForm-requesterEmail"
-                id="requesterEmail"
+                data-testid="RecommendationRequestForm-id"
+                id="id"
                 type="text"
-                isInvalid={Boolean(errors.requesterEmail)}
-                {...register("requesterEmail", {
-                  required: "Requester Email is required.",
-                })}
+                {...register("id")}
+                value={initialContents.id}
+                disabled
               /&gt;
-              &lt;Form.Control.Feedback type="invalid"&gt;
-                {errors.requesterEmail?.message}
-              &lt;/Form.Control.Feedback&gt;
             &lt;/Form.Group&gt;
           &lt;/Col&gt;
+        )}
 &nbsp;
-          &lt;Col&gt;
-            &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="professorEmail"&gt;Professor Email&lt;/Form.Label&gt;
-              &lt;Form.Control
-                data-testid="RecommendationRequestForm-professorEmail"
-                id="professorEmail"
-                type="text"
-                isInvalid={Boolean(errors.professorEmail)}
-                {...register("professorEmail", {
-                  required: "Professor Email is required.",
-                })}
-              /&gt;
-              &lt;Form.Control.Feedback type="invalid"&gt;
-                {errors.professorEmail?.message}
-              &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="dateRequested"&gt;
+              Date Requested (iso format)
+            &lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="RecommendationRequestForm-dateRequested"
+              id="dateRequested"
+              type="datetime-local"
+              isInvalid={Boolean(errors.dateRequested)}
+              {...register("dateRequested", {
+                required: true,
+                pattern: isodate_regex,
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.dateRequested &amp;&amp; "Date Requested is required. "}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
 &nbsp;
-     
-        
-        &lt;Row&gt;
-          {initialContents &amp;&amp; (
-            &lt;Col&gt;
-              &lt;Form.Group className="mb-3"&gt;
-                &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
-                &lt;Form.Control
-                  data-testid="RecommendationRequestForm-id"
-                  id="id"
-                  type="text"
-                  {...register("id")}
-                  value={initialContents.id}
-                  disabled
-                /&gt;
-              &lt;/Form.Group&gt;
-            &lt;/Col&gt;
-          )}
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="dateNeeded"&gt;
+              Date Needed (iso format)
+            &lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="RecommendationRequestForm-dateNeeded"
+              id="dateNeeded"
+              type="datetime-local"
+              isInvalid={Boolean(errors.dateNeeded)}
+              {...register("dateNeeded", {
+                required: true,
+                pattern: isodate_regex,
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.dateNeeded &amp;&amp; "Date Needed is required. "}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
 &nbsp;
-          &lt;Col&gt;
-            &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="dateRequested"&gt;Date Requested (iso format)&lt;/Form.Label&gt;
-              &lt;Form.Control
-                data-testid="RecommendationRequestForm-dateRequested"
-                id="dateRequested"
-                type="datetime-local"
-                isInvalid={Boolean(errors.dateRequested)}
-                {...register("dateRequested", {
-                  required: true,
-                  pattern: isodate_regex,
-                })}
-              /&gt;
-              &lt;Form.Control.Feedback type="invalid"&gt;
-                {errors.dateRequested &amp;&amp; "Date Requested is required. "}
-              &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-          &lt;/Col&gt;
-&nbsp;
-          &lt;Col&gt;
-            &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="dateNeeded"&gt;Date Needed (iso format)&lt;/Form.Label&gt;
-              &lt;Form.Control
-                data-testid="RecommendationRequestForm-dateNeeded"
-                id="dateNeeded"
-                type="datetime-local"
-                isInvalid={Boolean(errors.dateNeeded)}
-                {...register("dateNeeded", {
-                  required: true,
-                  pattern: isodate_regex,
-                })}
-              /&gt;
-              &lt;Form.Control.Feedback type="invalid"&gt;
-                {errors.dateNeeded &amp;&amp; "Date Needed is required. "}
-              &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-          &lt;/Col&gt;
-&nbsp;
-&nbsp;
-        &lt;/Row&gt;
-  
-        
-        &lt;Row&gt;
-          &lt;Col&gt;
-            &lt;Form.Group className="mb-3"&gt;
-              &lt;Form.Label htmlFor="done"&gt;Done?&lt;/Form.Label&gt;
-              &lt;Form.Control
-                data-testid="RecommendationRequestForm-done"
-                id="done"
-                as="select"
-                isInvalid={Boolean(errors.done)}
-                {...register("done", {
-                  required: "A value for Done is required.",
-                  pattern: boolean_regex,
-                })}
-              &gt;
-                &lt;option value="true"&gt;Yes&lt;/option&gt;
-                &lt;option value="false"&gt;No&lt;/option&gt;
-                &lt;/Form.Control&gt;
-              &lt;Form.Control.Feedback type="invalid"&gt;
-                {errors.done?.message}
-              &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
-&nbsp;
-        &lt;Row&gt;
-          &lt;Col&gt;
-            &lt;Button type="submit" data-testid="RecommendationRequestForm-submit"&gt;
-              {buttonLabel}
-            &lt;/Button&gt;
-            &lt;Button
-              variant="Secondary"
-              onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
-              data-testid="RecommendationRequestForm-cancel"
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="done"&gt;Done?&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="RecommendationRequestForm-done"
+              id="done"
+              as="select"
+              isInvalid={Boolean(errors.done)}
+              {...register("done", {
+                required: "A value for Done is required.",
+                pattern: boolean_regex,
+              })}
             &gt;
-              Cancel
-            &lt;/Button&gt;
-          &lt;/Col&gt;
-        &lt;/Row&gt;
-      &lt;/Form&gt;
-    );
-  }
-  
-  export default RecommendationRequestForm;
-  </pre></td></tr></table></pre>
+              &lt;option value="true"&gt;Yes&lt;/option&gt;
+              &lt;option value="false"&gt;No&lt;/option&gt;
+            &lt;/Form.Control&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.done?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+&nbsp;
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Button type="submit" data-testid="RecommendationRequestForm-submit"&gt;
+            {buttonLabel}
+          &lt;/Button&gt;
+          &lt;Button
+            variant="Secondary"
+            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigate(-1)}</span>
+            data-testid="RecommendationRequestForm-cancel"
+          &gt;
+            Cancel
+          &lt;/Button&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+    &lt;/Form&gt;
+  );
+}
+&nbsp;
+export default RecommendationRequestForm;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-30T23:17:11.460Z
+                at 2024-10-30T23:24:35.117Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
