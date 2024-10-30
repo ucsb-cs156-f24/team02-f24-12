@@ -6,6 +6,11 @@ import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import { toast } from "react-toastify";
+import {
+  onDeleteSuccess,
+  cellToAxiosParamsDelete,
+} from "main/utils/UCSBDiningCommonsMenuItemUtils";
 
 const mockedNavigate = jest.fn();
 
@@ -14,8 +19,40 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
+jest.mock("react-toastify", () => ({
+  toast: jest.fn(),
+}));
+
 describe("UserTable tests", () => {
   const queryClient = new QueryClient();
+
+  test("onDeleteSuccess calls toast with correct message", () => {
+    const message = "Menu item successfully deleted!";
+    onDeleteSuccess(message);
+    expect(toast).toHaveBeenCalledWith(message);
+  });
+
+  test("cellToAxiosParamsDelete returns correct axios parameters", () => {
+    const cell = { row: { values: { id: 123 } } };
+    const result = cellToAxiosParamsDelete(cell);
+
+    expect(result).toEqual({
+      url: "/api/ucsbdiningcommonsmenuitem",
+      method: "DELETE",
+      params: { id: 123 },
+    });
+  });
+
+  test("cellToAxiosParamsDelete handles null or undefined id gracefully", () => {
+    const cell = { row: { values: { id: undefined } } };
+    const result = cellToAxiosParamsDelete(cell);
+
+    expect(result).toEqual({
+      url: "/api/ucsbdiningcommonsmenuitem",
+      method: "DELETE",
+      params: { id: undefined },
+    });
+  });
 
   test("Has the expected column headers and content for ordinary user", () => {
     const currentUser = currentUserFixtures.userOnly;
