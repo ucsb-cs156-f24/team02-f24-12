@@ -131,12 +131,16 @@ function RecommendationRequestForm({
               <Form.Control
                 data-testid="RecommendationRequestForm-done"
                 id="done"
+                as="select"
                 isInvalid={Boolean(errors.done)}
                 {...register("done", {
                   required: "A value for Done is required.",
                   pattern: boolean_regex,
                 })}
-              />
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+                </Form.Control>
               <Form.Control.Feedback type="invalid">
                 {errors.done?.message}
               </Form.Control.Feedback>
