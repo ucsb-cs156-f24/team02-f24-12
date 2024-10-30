@@ -95,7 +95,8 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
       "3",
     );
 
-    const createUCSBDiningCommonsMenuItemButton = screen.queryByText("Create Menu Item");
+    const createUCSBDiningCommonsMenuItemButton =
+      screen.queryByText("Create Menu Item");
     expect(createUCSBDiningCommonsMenuItemButton).not.toBeInTheDocument();
 
     const diningCommonsCode = screen.getByText("DLG");
@@ -104,15 +105,19 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
     const name = screen.getByText("DeLaGuerra");
     expect(name).toBeInTheDocument();
 
-    const station = screen.getByText("Grill",);
+    const station = screen.getByText("Grill");
     expect(station).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(
-      screen.queryByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-Delete-button"),
+      screen.queryByTestId(
+        "UCSBDiningCommonsMenuItemTable-cell-row-0-col-Delete-button",
+      ),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByTestId("UCSBDiningCommonsMenuItemTable-cell-row-0-col-Edit-button"),
+      screen.queryByTestId(
+        "UCSBDiningCommonsMenuItemTable-cell-row-0-col-Edit-button",
+      ),
     ).not.toBeInTheDocument();
   });
 
@@ -184,8 +189,12 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
     await waitFor(() => {
       expect(axiosMock.history.delete.length).toBe(1);
     });
-    expect(axiosMock.history.delete[0].url).toBe("/api/ucsbdiningcommonsmenuitem");
-    expect(axiosMock.history.delete[0].url).toBe("/api/ucsbdiningcommonsmenuitem");
+    expect(axiosMock.history.delete[0].url).toBe(
+      "/api/ucsbdiningcommonsmenuitem",
+    );
+    expect(axiosMock.history.delete[0].url).toBe(
+      "/api/ucsbdiningcommonsmenuitem",
+    );
     expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
   });
 });
