@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
 import {
   recommendationRequestFixtures,
-  restaurantFixtures,
 } from "fixtures/recommendationRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
