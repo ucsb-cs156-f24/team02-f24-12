@@ -2,7 +2,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import RecommendationRequestForm from "main/components/RecommendationRequests/RecommendationRequestForm";
-import { recommendationRequestFixtures, restaurantFixtures } from "fixtures/recommendationRequestFixtures";
+import {
+  recommendationRequestFixtures,
+  restaurantFixtures,
+} from "fixtures/recommendationRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -16,7 +19,14 @@ jest.mock("react-router-dom", () => ({
 describe("RecommendationRequestForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Requester Email", "Professor Email", "Date Requested (iso format)", "Date Needed (iso format)", "Explanation", "Done?"];
+  const expectedHeaders = [
+    "Requester Email",
+    "Professor Email",
+    "Date Requested (iso format)",
+    "Date Needed (iso format)",
+    "Explanation",
+    "Done?",
+  ];
   const testId = "RecommendationRequestForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -40,7 +50,11 @@ describe("RecommendationRequestForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <RecommendationRequestForm initialContents={recommendationRequestFixtures.oneRecommendationRequest} />
+          <RecommendationRequestForm
+            initialContents={
+              recommendationRequestFixtures.oneRecommendationRequest
+            }
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -90,7 +104,6 @@ describe("RecommendationRequestForm tests", () => {
     await screen.findByText(/Date Requested is required/);
     await screen.findByText(/Explanation is required/);
     expect(screen.getByText(/Date Needed is required/)).toBeInTheDocument();
-
   });
 
   test("No Error messsages on good input", async () => {
@@ -103,20 +116,37 @@ describe("RecommendationRequestForm tests", () => {
     );
     await screen.findByTestId("RecommendationRequestForm-explanation");
 
-    const requesterEmailField = screen.getByTestId("RecommendationRequestForm-requesterEmail");
-    const professorEmailField = screen.getByTestId("RecommendationRequestForm-professorEmail");
-    const dateRequestedField = screen.getByTestId("RecommendationRequestForm-dateRequested");
-    const dateNeededField = screen.getByTestId("RecommendationRequestForm-dateNeeded");
-    const explanationField = screen.getByTestId("RecommendationRequestForm-explanation");
+    const requesterEmailField = screen.getByTestId(
+      "RecommendationRequestForm-requesterEmail",
+    );
+    const professorEmailField = screen.getByTestId(
+      "RecommendationRequestForm-professorEmail",
+    );
+    const dateRequestedField = screen.getByTestId(
+      "RecommendationRequestForm-dateRequested",
+    );
+    const dateNeededField = screen.getByTestId(
+      "RecommendationRequestForm-dateNeeded",
+    );
+    const explanationField = screen.getByTestId(
+      "RecommendationRequestForm-explanation",
+    );
     const doneField = screen.getByTestId("RecommendationRequestForm-done");
     const submitButton = screen.getByText(/Create/);
-    fireEvent.change(requesterEmailField, { target: { value: "javinzipkin@gmail.com" } });
-    fireEvent.change(professorEmailField, { target: { value: "javinzipkin@ucsb.edu" } });
-    fireEvent.change(dateRequestedField, { target: { value: "2020-10-10T00:00:00" } });
-    fireEvent.change(dateNeededField, { target: { value: "2020-10-10T00:00:00" } });
+    fireEvent.change(requesterEmailField, {
+      target: { value: "javinzipkin@gmail.com" },
+    });
+    fireEvent.change(professorEmailField, {
+      target: { value: "javinzipkin@ucsb.edu" },
+    });
+    fireEvent.change(dateRequestedField, {
+      target: { value: "2020-10-10T00:00:00" },
+    });
+    fireEvent.change(dateNeededField, {
+      target: { value: "2020-10-10T00:00:00" },
+    });
     fireEvent.change(explanationField, { target: { value: "GIMME IT!" } });
     fireEvent.change(doneField, { target: { value: "true" } });
-
 
     fireEvent.click(submitButton);
 
@@ -138,6 +168,4 @@ describe("RecommendationRequestForm tests", () => {
       screen.queryByText(/Date requested is required/),
     ).not.toBeInTheDocument();
   });
-
-
 });

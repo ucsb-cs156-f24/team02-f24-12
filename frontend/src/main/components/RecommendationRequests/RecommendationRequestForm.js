@@ -150,8 +150,7 @@ function RecommendationRequestForm({
               id="done"
               as="select"
               isInvalid={Boolean(errors.done)}
-              {...register("done", {
-              })}
+              {...register("done", {})}
             >
               <option value="true">Yes</option>
               <option value="false">No</option>
