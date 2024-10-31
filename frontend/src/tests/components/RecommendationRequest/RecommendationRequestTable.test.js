@@ -168,6 +168,15 @@ describe("RecommendationRequestTable tests", () => {
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
+    const editButton = screen.queryByTestId(
+      `${testId}-cell-row-0-col-Edit-button`,
+    );
+    expect(editButton).not.toBeInTheDocument();
+
+    const deleteButton = screen.queryByTestId(
+      `${testId}-cell-row-0-col-Delete-button`,
+    );
+    expect(deleteButton).not.toBeInTheDocument();
   });
 
   test("Edit button navigates to the edit page", async () => {
