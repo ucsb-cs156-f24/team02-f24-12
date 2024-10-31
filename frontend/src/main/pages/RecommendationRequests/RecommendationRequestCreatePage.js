@@ -14,7 +14,7 @@ export default function RecommendationRequestCreatePage({ storybook = false }) {
       explanation: recommendationRequest.explanation,
       dateNeeded: recommendationRequest.dateNeeded,
       dateRequested: recommendationRequest.dateRequested,
-      done: recommendationRequest.done,
+      doneBool: recommendationRequest.done,
     },
   });
 

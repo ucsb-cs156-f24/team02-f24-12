@@ -71,7 +71,7 @@ describe("RecommendationRequest 'Create' Page tests", () => {
       explanation: "Listen to my album.",
       dateRequested: "2021-10-31T00:00",
       dateNeeded: "2022-12-31T00:00",
-      done: true,
+      doneBool: "true",
     };
 
     axiosMock.onPost("/api/recommendationrequests/post").reply(202, req);
@@ -147,7 +147,7 @@ describe("RecommendationRequest 'Create' Page tests", () => {
       explanation: "Listen to my album.",
       dateRequested: "2021-10-31T00:00",
       dateNeeded: "2022-12-31T00:00",
-      done: "true",
+      doneBool: "true",
     });
 
     expect(mockToast).toBeCalledWith(
