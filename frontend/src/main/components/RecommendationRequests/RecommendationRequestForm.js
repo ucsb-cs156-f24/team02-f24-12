@@ -24,7 +24,7 @@ function RecommendationRequestForm({
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
-      {initialContents && (
+        {initialContents && (
           <Col>
             <Form.Group className="mb-3">
               <Form.Label htmlFor="id">Id</Form.Label>
