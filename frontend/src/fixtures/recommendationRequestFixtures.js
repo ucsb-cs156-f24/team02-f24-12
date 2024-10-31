@@ -3,7 +3,7 @@ const recommendationRequestFixtures = {
     id: 1,
     requesterEmail: "javinzipkin@gmail.com",
     professorEmail: "ethelcain@ucsb.edu",
-    explanation: "It's just not my year, but I'm all good out here.",
+    explanation: "Its just not my year, but Im all good out here.",
     dateRequested: "2020-10-31T00:00:00",
     dateNeeded: "2020-12-31T00:00:00",
     done: false,
