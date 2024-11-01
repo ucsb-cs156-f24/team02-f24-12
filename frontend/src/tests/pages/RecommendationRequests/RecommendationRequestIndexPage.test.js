@@ -62,7 +62,9 @@ describe("RecommendationRequest 'Index' Page tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByText(/Create Recommendation Request/)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Create Recommendation Request/),
+      ).toBeInTheDocument();
     });
     const button = screen.getByText(/Create Recommendation Request/);
     expect(button).toHaveAttribute("href", "/recommendationrequests/create");
@@ -101,9 +103,7 @@ describe("RecommendationRequest 'Index' Page tests", () => {
     const requesterEmail = screen.getByText("ethelcain@gmail.com");
     expect(requesterEmail).toBeInTheDocument();
 
-    const explanation = screen.getByText(
-      "Listen to my album.",
-    );
+    const explanation = screen.getByText("Listen to my album.");
     expect(explanation).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
@@ -177,7 +177,9 @@ describe("RecommendationRequest 'Index' Page tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith("Recommendation Request with id 1 was deleted");
+      expect(mockToast).toBeCalledWith(
+        "Recommendation Request with id 1 was deleted",
+      );
     });
 
     await waitFor(() => {
