@@ -48,7 +48,9 @@ describe("Recommendation Request 'Edit' Page tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationrequests", { params: { id: 1 } }).timeout();
+      axiosMock
+        .onGet("/api/recommendationrequests", { params: { id: 1 } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -63,7 +65,9 @@ describe("Recommendation Request 'Edit' Page tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit Recommendation Request");
-      expect(screen.queryByTestId("RecommendationRequest-explanation")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("RecommendationRequest-explanation"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,15 +84,17 @@ describe("Recommendation Request 'Edit' Page tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/recommendationrequests", { params: { id: 1 } }).reply(200, {
-        id: 1,
-        requesterEmail: "javinzipkin@ucsb.edu",
-        professorEmail: "ethelcain@gmail.com",
-        explanation: "This year is amazing!",
-        dateRequested: "2020-01-31T00:00",
-        dateNeeded: "2020-12-31T00:00",
-        doneBool: true,
-      });
+      axiosMock
+        .onGet("/api/recommendationrequests", { params: { id: 1 } })
+        .reply(200, {
+          id: 1,
+          requesterEmail: "javinzipkin@ucsb.edu",
+          professorEmail: "ethelcain@gmail.com",
+          explanation: "This year is amazing!",
+          dateRequested: "2020-01-31T00:00",
+          dateNeeded: "2020-12-31T00:00",
+          doneBool: true,
+        });
       axiosMock.onPut("/api/recommendationrequests").reply(200, {
         id: "1",
         requesterEmail: "No One",
@@ -130,7 +136,9 @@ describe("Recommendation Request 'Edit' Page tests", () => {
         "RecommendationRequestForm-dateNeeded",
       );
       const doneField = screen.getByTestId("RecommendationRequestForm-done");
-      const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
+      const submitButton = screen.getByTestId(
+        "RecommendationRequestForm-submit",
+      );
 
       expect(idField).toBeInTheDocument();
       expect(idField).toHaveValue("1");
@@ -146,7 +154,6 @@ describe("Recommendation Request 'Edit' Page tests", () => {
       expect(dateRequestedField).toHaveValue("2020-01-31T00:00");
       expect(dateNeededField).toBeInTheDocument();
       expect(dateNeededField).toHaveValue("2020-12-31T00:00");
-
 
       expect(submitButton).toHaveTextContent("Update");
 
@@ -207,7 +214,9 @@ describe("Recommendation Request 'Edit' Page tests", () => {
         "RecommendationRequestForm-dateNeeded",
       );
       const doneField = screen.getByTestId("RecommendationRequestForm-done");
-      const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
+      const submitButton = screen.getByTestId(
+        "RecommendationRequestForm-submit",
+      );
 
       expect(idField).toBeInTheDocument();
       expect(idField).toHaveValue("1");
