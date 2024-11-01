@@ -92,8 +92,12 @@ describe("ArticlesForm tests", () => {
     const submitButton = screen.getByTestId("ArticlesForm-submit");
 
     fireEvent.change(titleField, { target: { value: "FirstArticles" } });
-    fireEvent.change(urlField, { target: { value: "https://www.google.com/" } });
-    fireEvent.change(explanationField, { target: { value: "This is my first article" } });
+    fireEvent.change(urlField, {
+      target: { value: "https://www.google.com/" },
+    });
+    fireEvent.change(explanationField, {
+      target: { value: "This is my first article" },
+    });
     fireEvent.change(emailField, { target: { value: "yungong@ucsb.edu" } });
     fireEvent.change(dateAddedField, {
       target: { value: "2022-01-02T12:00" },
@@ -103,7 +107,9 @@ describe("ArticlesForm tests", () => {
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
     expect(
-      screen.queryByText(/DateAdded must be in the format YYYY-MM-DDTTHH:MM:SS/),
+      screen.queryByText(
+        /DateAdded must be in the format YYYY-MM-DDTTHH:MM:SS/,
+      ),
     ).not.toBeInTheDocument();
   });
 
