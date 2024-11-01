@@ -10,7 +10,7 @@ export function onDeleteSuccess(message) {
 export function cellToAxiosParamsDelete(cell) {
   return {
     // Stryker disable all
-    url: "/api/recommendationRequests",
+    url: "/api/recommendationrequests",
     // Stryker restore all
     method: "DELETE",
     params: {
