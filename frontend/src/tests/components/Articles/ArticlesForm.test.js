@@ -24,7 +24,7 @@ describe("ArticlesForm tests", () => {
   test("renders correctly when passing in a Articles", async () => {
     render(
       <Router>
-        <ArticlesForm initialContents={articlesFixtures.oneDate} />
+        <ArticlesForm initialContents={articlesFixtures.oneArticle} />
       </Router>,
     );
     await screen.findByTestId(/ArticlesForm-id/);
@@ -53,7 +53,7 @@ describe("ArticlesForm tests", () => {
     fireEvent.change(dateAddedField, { target: { value: "bad-input" } });
     fireEvent.click(submitButton);
 
-    await screen.findByText(/DateAdded must be in the format YYYY-MM-DDTTHH:MM:SS/);
+    await screen.findByText(/DateAdded is required./);
   });
 
   test("Correct Error messsages on missing input", async () => {

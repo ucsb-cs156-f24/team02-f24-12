@@ -36,7 +36,7 @@ function ArticlesForm({
             <Form.Group className="mb-3">
               <Form.Label htmlFor="id">Id</Form.Label>
               <Form.Control
-                data-testid="Articles-id"
+                data-testid="ArticlesForm-id"
                 id="id"
                 type="text"
                 {...register("id")}
@@ -51,12 +51,12 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="title">Title</Form.Label>
             <Form.Control
-              data-testid="Articles-title"
+              data-testid="ArticlesForm-title"
               id="title"
               type="text"
               isInvalid={Boolean(errors.title)}
               {...register("title", {
-                required: true,
+                required: "Title is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
@@ -71,7 +71,7 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="url">URL Link</Form.Label>
             <Form.Control
-              data-testid="Articles-url"
+              data-testid="ArticlesForm-url"
               id="url"
               type="text"
               isInvalid={Boolean(errors.url)}
@@ -91,7 +91,7 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="explanation">Explanation</Form.Label>
             <Form.Control
-              data-testid="Articles-explanation"
+              data-testid="ArticlesForm-explanation"
               id="explanation"
               type="text"
               isInvalid={Boolean(errors.explanation)}
@@ -111,7 +111,7 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
-              data-testid="Articles-email"
+              data-testid="ArticlesForm-email"
               id="email"
               type="text"
               isInvalid={Boolean(errors.email)}
@@ -131,19 +131,17 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="dateAdded">Added Date (iso format)</Form.Label>
             <Form.Control
-              data-testid="Articles-dateAdded"
+              data-testid="ArticlesForm-dateAdded"
               id="dateAdded"
               type="datetime-local"
-              isInvalid={Boolean(errors.localDateTime)}
-              {...register("localDateTime", {
+              isInvalid={Boolean(errors.dateAdded)}
+              {...register("dateAdded", {
                 required: true,
                 pattern: isodate_regex,
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.localDateTime && "DateAdded is required. "}
-              {errors.localDateTime?.type === "pattern" &&
-                "DateAdded must be in the format YYYY-MM-DDTTHH:MM:SS, e.g. 20224-11-01TT07:58:12"}
+              {errors.dateAdded && "DateAdded is required. "}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
