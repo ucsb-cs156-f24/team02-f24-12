@@ -1,4 +1,5 @@
 import React from "react";
+// import {useTable} from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
@@ -24,7 +25,7 @@ export default function RecommendationRequestTable({
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/recommendationRequests/all"],
+    ["/api/recommendationrequests/all"],
   );
   // Stryker restore all
 
@@ -61,6 +62,9 @@ export default function RecommendationRequestTable({
     {
       Header: "Done?",
       accessor: "done",
+      // Stryker disable all
+      Cell: ({ value }) => (value ? "Yes" : "No"),
+      // Stryker restore all
     },
   ];
 
