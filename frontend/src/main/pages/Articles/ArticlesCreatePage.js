@@ -19,7 +19,7 @@ export default function ArticlesCreatePage({ storybook = false }) {
 
   const onSuccess = (articles) => {
     toast(
-      `New articles Created - id: ${articles.id} title: ${articles.title} url: ${articles.url}$ explanation: ${articles.explanation}$ email: ${articles.email}$ dateAdded: ${articles.dateAdded}$`,
+      `New articles Created - id: ${articles.id} title: ${articles.title} url: ${articles.url} explanation: ${articles.explanation} email: ${articles.email} dateAdded: ${articles.dateAdded}`,
     );
   };
 

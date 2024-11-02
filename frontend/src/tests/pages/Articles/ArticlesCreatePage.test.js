@@ -117,7 +117,7 @@ describe("ArticlesCreatePage tests", () => {
     });
 
     expect(mockToast).toBeCalledWith(
-      "New articles Created - id: 17 title: FirstArticle url: https://www.google.com/$ explanation: This is my first article$ email: yungong@ucsb.edu$ dateAdded: 2022-02-02T00:00$",
+      "New articles Created - id: 17 title: FirstArticle url: https://www.google.com/ explanation: This is my first article email: yungong@ucsb.edu dateAdded: 2022-02-02T00:00",
     );
     expect(mockNavigate).toBeCalledWith({ to: "/articles" });
   });
