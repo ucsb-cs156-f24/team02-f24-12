@@ -93,7 +93,9 @@ describe("ArticlesCreatePage tests", () => {
     const submitButton = screen.getByTestId("ArticlesForm-submit");
 
     fireEvent.change(titleField, { target: { value: "FirstArticle" } });
-    fireEvent.change(urlField, { target: { value: "https://www.google.com/" } });
+    fireEvent.change(urlField, {
+      target: { value: "https://www.google.com/" },
+    });
     fireEvent.change(explanationField, {
       target: { value: "This is my first article" },
     });
