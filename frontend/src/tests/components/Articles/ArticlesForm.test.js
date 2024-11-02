@@ -106,10 +106,14 @@ describe("ArticlesForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
+    expect(screen.queryByText(/Title is required./)).not.toBeInTheDocument();
+    expect(screen.queryByText(/URL is required./)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(
-        /DateAdded must be in the format YYYY-MM-DDTTHH:MM:SS/,
-      ),
+      screen.queryByText(/Explanation is required./),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/Email is required./)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/DateAdded is required./),
     ).not.toBeInTheDocument();
   });
 
