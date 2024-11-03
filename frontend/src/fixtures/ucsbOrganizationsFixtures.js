@@ -7,7 +7,6 @@ const ucsbOrganizationsFixtures = {
       inactive: false,
     },
   ],
-
   threeOrganizations: [
     {
       orgcode: "SKY",
@@ -33,4 +32,3 @@ const ucsbOrganizationsFixtures = {
 };
 
 export { ucsbOrganizationsFixtures };
-  
