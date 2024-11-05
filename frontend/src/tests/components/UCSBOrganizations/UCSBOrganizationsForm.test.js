@@ -16,7 +16,7 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationsForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["orgTranslationShort", "orgTranslation", "inactive?"];
+  const expectedHeaders = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive?"];
   const testId = "UCSBOrganizationsForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -86,6 +86,7 @@ describe("UCSBOrganizationsForm tests", () => {
     const submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
 
+    await screen.findByText(/orgcode is required/);
     await screen.findByText(/orgTranslationShort is required/);
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
   });
@@ -97,18 +98,25 @@ describe("UCSBOrganizationsForm tests", () => {
         <UCSBOrganizationsForm submitAction={mockSubmitAction} />
       </Router>,
     );    
-    await screen.findByTestId(`${testId}-orgTranslationShort`);
+    await screen.findByTestId(`${testId}-orgcode`);
+    const orgcode = screen.getByTestId(`${testId}-orgcode`);
     const orgTranslationShort = screen.getByTestId(`${testId}-orgTranslationShort`);
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
     const inactive = screen.getByTestId(`${testId}-inactive`);
 
     const submitButton = screen.getByText(/Create/);
-    fireEvent.change(orgTranslationShort, { target: { value: "ORG" } });
+    fireEvent.change(orgcode, { target: { value: "ORG" } });
+    fireEvent.change(orgTranslationShort, { target: { value: "ORG short discription" } });
     fireEvent.change(orgTranslation, { target: { value: "ORG full name" } });
     fireEvent.change(inactive, { target: { value: "true" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
+    expect(
+      screen.queryByText(
+        /orgcode is required/,
+      ),
+    ).not.toBeInTheDocument();
     expect(
       screen.queryByText(
         /orgTranslationShort is required/,
