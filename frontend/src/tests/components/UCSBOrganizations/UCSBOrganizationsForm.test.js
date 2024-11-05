@@ -95,12 +95,13 @@ describe("UCSBOrganizationsForm tests", () => {
       <Router>
         <UCSBOrganizationsForm submitAction={mockSubmitAction} />
       </Router>,
-    );
+    );    
     await screen.findByTestId(`${testId}-orgTranslationShort`);
     const orgTranslationShort = screen.getByTestId(`${testId}-orgTranslationShort`);
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
     const inactive = screen.getByTestId(`${testId}-inactive`);
 
+    const submitButton = screen.getByText(/Create/);
     fireEvent.change(orgTranslationShort, { target: { value: "ORG" } });
     fireEvent.change(orgTranslation, { target: { value: "ORG full name" } });
     fireEvent.change(inactive, { target: { value: "true" } });
