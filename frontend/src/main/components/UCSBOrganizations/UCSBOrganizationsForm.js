@@ -28,10 +28,15 @@ function UCSBOrganizationsForm({
             data-testid={testIdPrefix + "-orgcode"}
             id="orgcode"
             type="text"
-            {...register("orgcode")}
-            value={initialContents.orgcode}
+            isInvalid={Boolean(errors.orgcode)}
+            {...register("orgcode", {
+              required: "orgcode is required.",
+            })}
             disabled
           />
+          <Form.Control.Feedback type="invalid">
+            {errors.orgcode?.message}
+          </Form.Control.Feedback>
         </Form.Group>
       )}
 
@@ -76,8 +81,8 @@ function UCSBOrganizationsForm({
             isInvalid={Boolean(errors.inactive)}
             {...register("inactive", {})}
         >
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value="true">True</option>
+            <option value="false">False</option>
         </Form.Control>
         <Form.Control.Feedback type="invalid">
             {errors.inactive?.message}

@@ -36,7 +36,7 @@ describe("UCSBOrganizationsForm tests", () => {
     });
   });
 
-  test("renders correctly when passing in initialContents", async () => {
+  test("renders correctly when passing in initialContents", async () => { 
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
@@ -51,6 +51,7 @@ describe("UCSBOrganizationsForm tests", () => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
     });
+    
 
     expect(await screen.findByTestId(`${testId}-orgcode`)).toBeInTheDocument();
     expect(screen.getByText(`orgcode`)).toBeInTheDocument();
