@@ -21,24 +21,22 @@ function UCSBOrganizationsForm({
 
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
-      {initialContents && (
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="orgcode">orgcode</Form.Label>
-          <Form.Control
-            data-testid={testIdPrefix + "-orgcode"}
-            id="orgcode"
-            type="text"
-            isInvalid={Boolean(errors.orgcode)}
-            {...register("orgcode", {
-              required: "orgcode is required.",
-            })}
-            disabled
-          />
-          <Form.Control.Feedback type="invalid">
-            {errors.orgcode?.message}
-          </Form.Control.Feedback>
-        </Form.Group>
-      )}
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="orgcode">orgcode</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-orgcode"}
+          id="orgcode"
+          type="text"
+          isInvalid={Boolean(errors.orgcode)}
+          //value={initialContents.orgcode}
+          {...register("orgcode", {
+            required: "orgcode is required.",
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.orgcode?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgTranslationShort">orgTranslationShort</Form.Label>
