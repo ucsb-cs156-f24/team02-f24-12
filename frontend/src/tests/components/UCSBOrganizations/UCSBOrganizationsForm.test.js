@@ -73,21 +73,13 @@ describe("UCSBOrganizationsForm tests", () => {
   });
 
   test("that the correct validations are performed", async () => {
-    const mockSubmitAction = jest.fn();
-    // render(
-    //   <QueryClientProvider client={queryClient}>
-    //     <Router>
-    //       <UCSBOrganizationsForm />
-    //     </Router>
-    //   </QueryClientProvider>,
-    // );
     render(
-      <Router>
-        <UCSBOrganizationsForm submitAction={mockSubmitAction} />
-      </Router>,
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationsForm />
+        </Router>
+      </QueryClientProvider>,
     );
-    await screen.findByTestId(`${testId}-orgTranslationShort`);
-
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
     const submitButton = screen.getByText(/Create/);
@@ -95,7 +87,16 @@ describe("UCSBOrganizationsForm tests", () => {
 
     await screen.findByText(/orgTranslationShort is required/);
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
+  });
 
+  test("No Error messsages on good input", async () => {
+    const mockSubmitAction = jest.fn();
+    render(
+      <Router>
+        <UCSBOrganizationsForm submitAction={mockSubmitAction} />
+      </Router>,
+    );
+    await screen.findByTestId(`${testId}-orgTranslationShort`);
     const orgTranslationShort = screen.getByTestId(`${testId}-orgTranslationShort`);
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
     const inactive = screen.getByTestId(`${testId}-inactive`);
