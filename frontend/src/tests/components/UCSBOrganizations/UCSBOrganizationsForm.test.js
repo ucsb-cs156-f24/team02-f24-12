@@ -73,13 +73,21 @@ describe("UCSBOrganizationsForm tests", () => {
   });
 
   test("that the correct validations are performed", async () => {
+    const mockSubmitAction = jest.fn();
+    // render(
+    //   <QueryClientProvider client={queryClient}>
+    //     <Router>
+    //       <UCSBOrganizationsForm />
+    //     </Router>
+    //   </QueryClientProvider>,
+    // );
     render(
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <UCSBOrganizationsForm />
-        </Router>
-      </QueryClientProvider>,
+      <Router>
+        <UCSBOrganizationsForm submitAction={mockSubmitAction} />
+      </Router>,
     );
+    await screen.findByTestId(`${testId}-orgTranslationShort`);
+
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
     const submitButton = screen.getByText(/Create/);
@@ -88,12 +96,23 @@ describe("UCSBOrganizationsForm tests", () => {
     await screen.findByText(/orgTranslationShort is required/);
     expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
 
-    // const orgTranslationShortInput = screen.getByTestId(`${testId}-orgTranslationShort`);
-    // fireEvent.change(orgTranslationShortInput, { target: { value: "a".repeat(31) } });
-    // fireEvent.click(submitButton);
+    const orgTranslationShort = screen.getByTestId(`${testId}-orgTranslationShort`);
+    const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
+    const inactive = screen.getByTestId(`${testId}-inactive`);
 
-    // await waitFor(() => {
-    //   expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
-    // });
+    fireEvent.change(orgTranslationShort, { target: { value: "ORG" } });
+    fireEvent.change(orgTranslation, { target: { value: "ORG full name" } });
+    fireEvent.change(inactive, { target: { value: "true" } });
+    fireEvent.click(submitButton);
+
+    await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
+    expect(
+      screen.queryByText(
+        /orgTranslationShort is required/,
+      ),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(/orgTranslation is required/),
+    ).not.toBeInTheDocument();
   });
 });
