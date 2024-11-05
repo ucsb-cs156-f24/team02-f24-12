@@ -84,7 +84,7 @@ public class UCSBDatesController extends ApiController {
     public UCSBDate postUCSBDate(
             @Parameter(name="quarterYYYYQ") @RequestParam String quarterYYYYQ,
             @Parameter(name="name") @RequestParam String name,
-            @Parameter(name="localDateTime", description="date (in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
+            @Parameter(name="localDateTime", description="(in iso format, e.g. YYYY-mm-ddTHH:MM:SS; see https://en.wikipedia.org/wiki/ISO_8601)") @RequestParam("localDateTime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime localDateTime)
             throws JsonProcessingException {
 
         // For an explanation of @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -102,12 +102,17 @@ public class UCSBDatesController extends ApiController {
         return savedUcsbDate;
     }
 
-    /**
-     * Delete a UCSBDate
-     * 
-     * @param id the id of the date to delete
-     * @return a message indicating the date was deleted
-     */
+    @Operation(summary= "Get a single date")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBDate getById(
+            @Parameter(name="id") @RequestParam Long id) {
+        UCSBDate ucsbDate = ucsbDateRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBDate.class, id));
+
+        return ucsbDate;
+    }
+
     @Operation(summary= "Delete a UCSBDate")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")

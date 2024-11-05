@@ -48,22 +48,6 @@ public class UCSBDiningCommonsController extends ApiController {
     }
 
     /**
-     * This method returns a single diningcommons.
-     * @param code code of the diningcommons
-     * @return a single diningcommons
-     */
-    @Operation(summary= "Get a single commons")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    @GetMapping("")
-    public UCSBDiningCommons getById(
-            @Parameter(name="code") @RequestParam String code) {
-        UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
-                .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
-
-        return commons;
-    }
-
-    /**
      * This method creates a new diningcommons. Accessible only to users with the role "ROLE_ADMIN".
      * @param code code of the diningcommons
      * @param name name of the diningcommons
@@ -102,11 +86,17 @@ public class UCSBDiningCommonsController extends ApiController {
         return savedCommons;
     }
 
-    /**
-     * Delete a diningcommons. Accessible only to users with the role "ROLE_ADMIN".
-     * @param code code of the commons
-     * @return a message indiciating the commons was deleted
-     */
+    @Operation(summary= "Get a single commons")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public UCSBDiningCommons getById(
+            @Parameter(name="code") @RequestParam String code) {
+        UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
+                .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
+
+        return commons;
+    }
+
     @Operation(summary= "Delete a UCSBDiningCommons")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("")
