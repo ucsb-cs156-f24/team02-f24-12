@@ -16,7 +16,12 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationsForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive?"];
+  const expectedHeaders = [
+    "orgcode",
+    "orgTranslationShort",
+    "orgTranslation",
+    "inactive?",
+  ];
   const testId = "UCSBOrganizationsForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -36,11 +41,13 @@ describe("UCSBOrganizationsForm tests", () => {
     });
   });
 
-  test("renders correctly when passing in initialContents", async () => { 
+  test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <UCSBOrganizationsForm initialContents={ucsbOrganizationsFixtures.oneOrganization} />
+          <UCSBOrganizationsForm
+            initialContents={ucsbOrganizationsFixtures.oneOrganization}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -99,24 +106,26 @@ describe("UCSBOrganizationsForm tests", () => {
       <Router>
         <UCSBOrganizationsForm submitAction={mockSubmitAction} />
       </Router>,
-    );    
+    );
     await screen.findByTestId(`${testId}-orgcode`);
     const orgcode = screen.getByTestId(`${testId}-orgcode`);
-    const orgTranslationShort = screen.getByTestId(`${testId}-orgTranslationShort`);
+    const orgTranslationShort = screen.getByTestId(
+      `${testId}-orgTranslationShort`,
+    );
     const orgTranslation = screen.getByTestId(`${testId}-orgTranslation`);
     const inactive = screen.getByTestId(`${testId}-inactive`);
 
     const submitButton = screen.getByText(/Create/);
     fireEvent.change(orgcode, { target: { value: "ORG" } });
-    fireEvent.change(orgTranslationShort, { target: { value: "ORG short discription" } });
+    fireEvent.change(orgTranslationShort, {
+      target: { value: "ORG short discription" },
+    });
     fireEvent.change(orgTranslation, { target: { value: "ORG full name" } });
     fireEvent.change(inactive, { target: { value: "true" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
-    expect(
-      screen.queryByText(/orgcode is required/),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/orgcode is required/)).not.toBeInTheDocument();
     expect(
       screen.queryByText(/orgTranslationShort is required/),
     ).not.toBeInTheDocument();

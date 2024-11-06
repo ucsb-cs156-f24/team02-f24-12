@@ -39,7 +39,9 @@ function UCSBOrganizationsForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgTranslationShort">orgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgTranslationShort">
+          orgTranslationShort
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgTranslationShort"
@@ -73,17 +75,17 @@ function UCSBOrganizationsForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">inactive?</Form.Label>
         <Form.Control
-            data-testid={testIdPrefix + "-inactive"}
-            id="inactive"
-            as="select"
-            isInvalid={Boolean(errors.inactive)}
-            {...register("inactive", {})}
+          data-testid={testIdPrefix + "-inactive"}
+          id="inactive"
+          as="select"
+          isInvalid={Boolean(errors.inactive)}
+          {...register("inactive", {})}
         >
-            <option value="true">True</option>
-            <option value="false">False</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
         </Form.Control>
         <Form.Control.Feedback type="invalid">
-            {errors.inactive?.message}
+          {errors.inactive?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
