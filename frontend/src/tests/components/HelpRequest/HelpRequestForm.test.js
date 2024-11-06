@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import HelpRequestForm from "main/components/HelpRequests/HelpRequestForm";
+import HelpRequestForm from "main/components/HelpRequest/HelpRequestForm";
 import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
