@@ -281,4 +281,8 @@ async function respondWithMock(response) {
   })
 
   return mockedResponse
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b8b5a184dddab4612e300a6af078d3ce5ba54265
