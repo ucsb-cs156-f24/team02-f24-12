@@ -28,15 +28,6 @@ const helpRequestFixtures = {
       solved: "no",
     },
     {
-      id: 2,
-      requesterEmail: "ucsbfan@ucsb.edu",
-      teamId: "team2",
-      tableOrBreakoutRoom: "breakout room",
-      requestTime: "2022-02-02T12:00:00",
-      explanation: "bugs in code",
-      solved: "no",
-    },
-    {
       id: 3,
       requesterEmail: "storkie@ucsb.edu",
       teamId: "team3",
