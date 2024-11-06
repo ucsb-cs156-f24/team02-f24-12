@@ -47,11 +47,6 @@ public class UCSBDiningCommonsController extends ApiController {
         return commons;
     }
 
-    /**
-     * This method returns a single diningcommons.
-     * @param code code of the diningcommons
-     * @return a single diningcommons
-     */
     @Operation(summary= "Get a single commons")
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("")
@@ -101,6 +96,17 @@ public class UCSBDiningCommonsController extends ApiController {
 
         return savedCommons;
     }
+
+    // @Operation(summary= "Get a single commons")
+    // @PreAuthorize("hasRole('ROLE_USER')")
+    // @GetMapping("")
+    // public UCSBDiningCommons getById(
+    //         @Parameter(name="code") @RequestParam String code) {
+    //     UCSBDiningCommons commons = ucsbDiningCommonsRepository.findById(code)
+    //             .orElseThrow(() -> new EntityNotFoundException(UCSBDiningCommons.class, code));
+
+    //     return commons;
+    // }
 
     /**
      * Delete a diningcommons. Accessible only to users with the role "ROLE_ADMIN".

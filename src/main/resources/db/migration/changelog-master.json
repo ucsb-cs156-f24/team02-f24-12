@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "databaseChangeLog": [
     {
@@ -5,3 +6,10 @@
     }
   ]
 }
+=======
+{ "databaseChangeLog": [
+    {
+        "includeAll": {"path": "db/migration/changes/"}
+    }
+]}
+>>>>>>> starter/main

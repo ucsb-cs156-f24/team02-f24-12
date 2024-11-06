@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 {
   "databaseChangeLog": [
+=======
+{ "databaseChangeLog": [
+>>>>>>> starter/main
     {
       "changeSet": {
         "id": "Users-1",
@@ -98,6 +102,7 @@
                     "name": "PICTURE_URL",
                     "type": "VARCHAR(255)"
                   }
+<<<<<<< HEAD
                 }
               ],
               "tableName": "USERS"
@@ -108,3 +113,14 @@
     }
   ]
 }
+=======
+                }]
+              ,
+              "tableName": "USERS"
+            }
+          }]
+  
+      }
+    }
+  ]}
+>>>>>>> starter/main
