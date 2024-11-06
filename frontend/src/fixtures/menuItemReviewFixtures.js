@@ -35,4 +35,4 @@ const menuItemReviewFixtures = {
   ],
 };
 
-export default menuItemReviewFixtures;
+export { menuItemReviewFixtures };
