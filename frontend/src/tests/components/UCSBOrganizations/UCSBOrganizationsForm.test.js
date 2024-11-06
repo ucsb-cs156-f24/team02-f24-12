@@ -46,12 +46,14 @@ describe("UCSBOrganizationsForm tests", () => {
     );
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
+    expect(
+      screen.getByTestId("UCSBOrganizationsForm-submit"),
+    ).toBeInTheDocument();
 
     expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
     });
-    
 
     expect(await screen.findByTestId(`${testId}-orgcode`)).toBeInTheDocument();
     expect(screen.getByText(`orgcode`)).toBeInTheDocument();
@@ -86,9 +88,9 @@ describe("UCSBOrganizationsForm tests", () => {
     const submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
 
-    await screen.findByText(/orgcode is required/);
     await screen.findByText(/orgTranslationShort is required/);
-    expect(screen.getByText(/orgTranslation is required/)).toBeInTheDocument();
+    await screen.findByText(/orgTranslation is required/);
+    expect(screen.getByText(/orgcode is required/)).toBeInTheDocument();
   });
 
   test("No Error messsages on good input", async () => {
@@ -113,14 +115,10 @@ describe("UCSBOrganizationsForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
     expect(
-      screen.queryByText(
-        /orgcode is required/,
-      ),
+      screen.queryByText(/orgcode is required/),
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByText(
-        /orgTranslationShort is required/,
-      ),
+      screen.queryByText(/orgTranslationShort is required/),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByText(/orgTranslation is required/),
