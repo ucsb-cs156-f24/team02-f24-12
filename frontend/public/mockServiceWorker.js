@@ -280,5 +280,5 @@ async function respondWithMock(response) {
     enumerable: true,
   });
 
-  return mockedResponse;
+  return mockedResponse
 }
