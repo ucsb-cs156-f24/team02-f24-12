@@ -5,39 +5,36 @@ import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import { http, HttpResponse } from "msw";
 
 export default {
-    title: "components/MenuItemReview/MenuItemReviewTable",
-    component: MenuItemReviewTable,
-    };
+  title: "components/MenuItemReview/MenuItemReviewTable",
+  component: MenuItemReviewTable,
+};
 
 const Template = (args) => {
-    return <MenuItemReviewTable {...args} />;
-    }
+  return <MenuItemReviewTable {...args} />;
+};
 
 export const Empty = Template.bind({});
 Empty.args = {
-    menuItemReviews: [],
-    currentUser: currentUserFixtures.userOnly,
-    };
+  menuItemReviews: [],
+  currentUser: currentUserFixtures.userOnly,
+};
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
 ThreeItemsOrdinaryUser.args = {
-    menuItemReviews:
-        menuItemReviewFixtures.threeMenuItemReviews,
-    currentUser: currentUserFixtures.userOnly,
-    };
+  menuItemReviews: menuItemReviewFixtures.threeMenuItemReviews,
+  currentUser: currentUserFixtures.userOnly,
+};
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-    menuItemReviews:
-        menuItemReviewFixtures.threeMenuItemReviews,
-    currentUser: currentUserFixtures.adminUser,
-    };
+  menuItemReviews: menuItemReviewFixtures.threeMenuItemReviews,
+  currentUser: currentUserFixtures.adminUser,
+};
 
 ThreeItemsAdminUser.parameters = {
-    msw: [
-        http.delete("/api/menuitemreviews", () => {
-            return HttpResponse.json({}, { status: 200 });
-            }),
-        ],
-    };
-
+  msw: [
+    http.delete("/api/menuitemreviews", () => {
+      return HttpResponse.json({}, { status: 200 });
+    }),
+  ],
+};

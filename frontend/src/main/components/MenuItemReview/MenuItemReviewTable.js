@@ -10,10 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function MenuItemReviewTable({
-  menuItemReviews,
-  currentUser,
-}) {
+export default function MenuItemReviewTable({ menuItemReviews, currentUser }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
@@ -25,7 +22,7 @@ export default function MenuItemReviewTable({
   const deleteMutation = useBackendMutation(
     cellToAxiosParamsDelete,
     { onSuccess: onDeleteSuccess },
-    ["/api/menuitemreviews/all"],
+    ["/api/menuitemreviews/all"]
   );
   // Stryker restore all
 
@@ -63,20 +60,10 @@ export default function MenuItemReviewTable({
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
     columns.push(
-      ButtonColumn(
-        "Edit",
-        "primary",
-        editCallback,
-        "MenuItemReviewTable",
-      ),
+      ButtonColumn("Edit", "primary", editCallback, "MenuItemReviewTable")
     );
     columns.push(
-      ButtonColumn(
-        "Delete",
-        "danger",
-        deleteCallback,
-        "MenuItemReviewTable",
-      ),
+      ButtonColumn("Delete", "danger", deleteCallback, "MenuItemReviewTable")
     );
   }
 
