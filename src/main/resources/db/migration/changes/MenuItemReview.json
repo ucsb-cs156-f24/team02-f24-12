@@ -1,9 +1,10 @@
+
 {
     "databaseChangeLog": [
       {
         "changeSet": {
-          "id": "UCSBDates-1",
-          "author": "MattP",
+          "id": "MenuItemReview-12",
+          "author": "Sarvesh",
           "preConditions": [
             {
               "onFail": "MARK_RAN"
@@ -12,7 +13,7 @@
               "not": [
                 {
                   "tableExists": {
-                    "tableName": "UCSBDATES"
+                    "tableName": "MENUITEMREVIEW"
                   }
                 }
               ]
@@ -27,7 +28,7 @@
                       "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "CONSTRAINT_5"
+                        "primaryKeyName": "MENUITEMREVIEW_PK"
                       },
                       "name": "ID",
                       "type": "BIGINT"
@@ -35,28 +36,42 @@
                   },
                   {
                     "column": {
-                      "name": "LOCAL_DATE_TIME",
+                      "name": "ITEM_ID",
+                      "type": "BIGINT"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "REVIEWER_EMAIL",
+                      "type": "VARCHAR(255)"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "STARS",
+                      "type": "INT"
+                    }
+                  },
+                  {
+                    "column": {
+                      "name": "DATE_REVIEWED",
                       "type": "TIMESTAMP"
                     }
                   },
                   {
                     "column": {
-                      "name": "NAME",
-                      "type": "VARCHAR(255)"
-                    }
-                  },
-                  {
-                    "column": {
-                      "name": "QUARTERYYYYQ",
+                      "name": "COMMENTS",
                       "type": "VARCHAR(255)"
                     }
                   }
                 ],
-                "tableName": "UCSBDATES"
+                "tableName": "MENUITEMREVIEW"
               }
             }
           ]
         }
       }
     ]
-  }
+}
+
+
