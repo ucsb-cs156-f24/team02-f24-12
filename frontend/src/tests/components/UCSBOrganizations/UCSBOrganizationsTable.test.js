@@ -84,9 +84,9 @@ describe("UCSBOrganizationsTable tests", () => {
     expect(
         screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`),
       ).toHaveTextContent("SKYDIVING CLUB AT UCSB");
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
-      ).toHaveTextContent("No");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
+    ).toHaveTextContent("No");
     
     expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent(
         "OSLI",
@@ -97,9 +97,9 @@ describe("UCSBOrganizationsTable tests", () => {
     expect(
         screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`),
         ).toHaveTextContent("OFFICE OF STUDENT LIFE");
-        expect(
-          screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
-        ).toHaveTextContent("Yes");
+      expect(
+        screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
+    ).toHaveTextContent("Yes");
 
     expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent(
         "KRC",

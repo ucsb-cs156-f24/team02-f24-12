@@ -81,8 +81,8 @@ function UCSBOrganizationsForm({
           isInvalid={Boolean(errors.inactive)}
           {...register("inactive", {})}
         >
-          <option value="true">True</option>
-          <option value="false">False</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
         </Form.Control>
         <Form.Control.Feedback type="invalid">
           {errors.inactive?.message}
