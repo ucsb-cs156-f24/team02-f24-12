@@ -45,7 +45,7 @@ describe("MenuItemReviewTable tests", () => {
         <MemoryRouter>
           <MenuItemReviewTable menuItemReviews={[]} currentUser={currentUser} />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert
@@ -56,7 +56,7 @@ describe("MenuItemReviewTable tests", () => {
 
     expectedFields.forEach((field) => {
       const fieldElement = screen.queryByTestId(
-        `${testId}-cell-row-0-col-${field}`
+        `${testId}-cell-row-0-col-${field}`,
       );
       expect(fieldElement).not.toBeInTheDocument();
     });
@@ -75,7 +75,7 @@ describe("MenuItemReviewTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert
@@ -90,27 +90,27 @@ describe("MenuItemReviewTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)
+      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`),
     ).toHaveTextContent("b@ucsb.edu");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-comments`)
+      screen.getByTestId(`${testId}-cell-row-1-col-comments`),
     ).toHaveTextContent("This is my second review");
 
     const editButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Edit-button`
+      `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
     const deleteButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
+      `${testId}-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
@@ -129,7 +129,7 @@ describe("MenuItemReviewTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert
@@ -144,28 +144,28 @@ describe("MenuItemReviewTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)
+      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`),
     ).toHaveTextContent("b@ucsb.edu");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-comments`)
+      screen.getByTestId(`${testId}-cell-row-1-col-comments`),
     ).toHaveTextContent("This is my second review");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
     const editButton = screen.queryByTestId(
-      `${testId}-cell-row-0-col-Edit-button`
+      `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).not.toBeInTheDocument();
 
     const deleteButton = screen.queryByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
+      `${testId}-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).not.toBeInTheDocument();
   });
@@ -183,26 +183,26 @@ describe("MenuItemReviewTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert - check that the expected content is rendered
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)
+      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`),
     ).toHaveTextContent("b@ucsb.edu");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-comments`)
+      screen.getByTestId(`${testId}-cell-row-1-col-comments`),
     ).toHaveTextContent("This is my second review");
 
     const editButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Edit-button`
+      `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).toBeInTheDocument();
 
@@ -211,7 +211,7 @@ describe("MenuItemReviewTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/menuItemReviews/edit/1")
+      expect(mockedNavigate).toHaveBeenCalledWith("/menuItemReviews/edit/1"),
     );
   });
 
@@ -233,26 +233,26 @@ describe("MenuItemReviewTable tests", () => {
             currentUser={currentUser}
           />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert - check that the expected content is rendered
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-      "1"
+      "1",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`)
+      screen.getByTestId(`${testId}-cell-row-0-col-reviewerEmail`),
     ).toHaveTextContent("b@ucsb.edu");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-      "2"
+      "2",
     );
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-comments`)
+      screen.getByTestId(`${testId}-cell-row-1-col-comments`),
     ).toHaveTextContent("This is my second review");
 
     const deleteButton = screen.getByTestId(
-      `${testId}-cell-row-0-col-Delete-button`
+      `${testId}-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
 
