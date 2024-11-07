@@ -14,10 +14,10 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigate,
 }));
 
-describe("RestaurantTable tests", () => {
+describe("UCSBOrganizationsTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive"];
+  const expectedHeaders = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive?"];
   const expectedFields = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive"];
   const testId = "UCSBOrganizationsTable";
 
@@ -56,7 +56,7 @@ describe("RestaurantTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantTable
+          <UCSBOrganizationsTable
             ucsbOrganizations={ucsbOrganizationsFixtures.threeOrganizations}
             currentUser={currentUser}
           />
@@ -86,7 +86,7 @@ describe("RestaurantTable tests", () => {
       ).toHaveTextContent("SKYDIVING CLUB AT UCSB");
     expect(
         screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
-    ).toHaveTextContent("no");
+    ).toHaveTextContent("No");
     
     expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent(
         "OSLI",
@@ -99,7 +99,7 @@ describe("RestaurantTable tests", () => {
         ).toHaveTextContent("OFFICE OF STUDENT LIFE");
     expect(
         screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
-    ).toHaveTextContent("no");
+    ).toHaveTextContent("No");
 
     expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent(
         "KRC",
@@ -112,7 +112,7 @@ describe("RestaurantTable tests", () => {
         ).toHaveTextContent("KOREAN RADIO CLUB");
     expect(
         screen.getByTestId(`${testId}-cell-row-2-col-inactive`),
-    ).toHaveTextContent("no");
+    ).toHaveTextContent("No");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -135,7 +135,7 @@ describe("RestaurantTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantTable
+          <UCSBOrganizationsTable
             ucsbOrganizations={ucsbOrganizationsFixtures.threeOrganizations}
             currentUser={currentUser}
           />
@@ -179,7 +179,7 @@ describe("RestaurantTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantTable
+          <UCSBOrganizationsTable
             ucsbOrganizations={ucsbOrganizationsFixtures.threeOrganizations}
             currentUser={currentUser}
           />
@@ -205,7 +205,7 @@ describe("RestaurantTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/ucsbOrganizations/edit/SKY"),  
+      expect(mockedNavigate).toHaveBeenCalledWith("/ucsborganizations/edit/SKY"),  
     );
   });
 
@@ -222,7 +222,7 @@ describe("RestaurantTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <RestaurantTable
+          <UCSBOrganizationsTable
             ucsbOrganizations={ucsbOrganizationsFixtures.threeOrganizations}
             currentUser={currentUser}
           />
@@ -250,6 +250,6 @@ describe("RestaurantTable tests", () => {
     // assert - check that the delete endpoint was called
 
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
-    expect(axiosMock.history.delete[0].params).toEqual({ orgcode: SKY });
+    expect(axiosMock.history.delete[0].params).toEqual({ orgcode: "SKY" });
   });
 });

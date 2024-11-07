@@ -17,7 +17,7 @@ export default function UCSBOrganizationsTable({
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
-    navigate(`/ucsborganizations/edit/${cell.row.values.id}`);
+    navigate(`/ucsborganizations/edit/${cell.row.values.orgcode}`);
   };
 
   // Stryker disable all : hard to test for query caching
