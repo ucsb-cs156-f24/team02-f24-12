@@ -4,6 +4,7 @@ Deploying on Dokku is straightforward: you only need these steps:
 
 On your dokku server (once per team; the dokku server is shared by the entire team):
 
+
 1. Create the app: 
    ```
    dokku apps:create team02
@@ -49,4 +50,3 @@ deploy branches other than `main` and see what happens.
    ```
 
 Any time you need to redeploy, you can do so by repeating steps 3 and 4.
-

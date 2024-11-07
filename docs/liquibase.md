@@ -1,4 +1,5 @@
 # Liquibase Migrations
+
 Using Liquibase migrations allows you to make changes to your database tables without having to restart the entire database.
 
 Liquibase allows you to describe changes to the database schema and it uses those descriptions to apply changes to it.
@@ -60,9 +61,11 @@ This command can be used to rollback the database to a previousily marked tag
     ]
     "changes": etc
     }
+
 ``` 
 Preconditions can be set in each of the changes that will help you determine if certain change should be ran or what to do if it fails.
 
 The example above tells liquibase to mark a change as ran in case it fails because the table already exists, very useful when working with an already existing database.
+
 
 For more information on preconditions you can see https://docs.liquibase.com/concepts/changelogs/preconditions.html
