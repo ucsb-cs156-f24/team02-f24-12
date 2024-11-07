@@ -5,12 +5,11 @@ env:
 
 on:
   workflow_dispatch:
-   inputs:
+    inputs:
       project:
         type: number
         description: number of project
 jobs:
-
   copyIssuesToProject:
     runs-on: ubuntu-latest
     steps:
@@ -18,5 +17,3 @@ jobs:
         with:
           project-url: https://github.com/orgs/${{ github.repository_owner }}/projects/${{inputs.project}}
           github-token: ${{ github.token }}
-
-      

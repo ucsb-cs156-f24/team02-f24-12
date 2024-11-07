@@ -17,8 +17,18 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationsTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive?"];
-  const expectedFields = ["orgcode", "orgTranslationShort", "orgTranslation", "inactive"];
+  const expectedHeaders = [
+    "orgcode",
+    "orgTranslationShort",
+    "orgTranslation",
+    "inactive?",
+  ];
+  const expectedFields = [
+    "orgcode",
+    "orgTranslationShort",
+    "orgTranslation",
+    "inactive",
+  ];
   const testId = "UCSBOrganizationsTable";
 
   test("renders empty table correctly", () => {
@@ -29,7 +39,10 @@ describe("UCSBOrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationsTable ucsbOrganizations={[]} currentUser={currentUser} />
+          <UCSBOrganizationsTable
+            ucsbOrganizations={[]}
+            currentUser={currentUser}
+          />
         </MemoryRouter>
       </QueryClientProvider>,
     );
@@ -75,41 +88,41 @@ describe("UCSBOrganizationsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent(
-      "SKY",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
+    ).toHaveTextContent("SKY");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("SKYDIVING CLUB");
     expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`),
-      ).toHaveTextContent("SKYDIVING CLUB AT UCSB");
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslation`),
+    ).toHaveTextContent("SKYDIVING CLUB AT UCSB");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
     ).toHaveTextContent("No");
-    
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent(
-        "OSLI",
-      );
+
     expect(
-        screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-1-col-orgcode`),
+    ).toHaveTextContent("OSLI");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
     ).toHaveTextContent("STUDENT LIFE");
     expect(
-        screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`),
-        ).toHaveTextContent("OFFICE OF STUDENT LIFE");
-      expect(
-        screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslation`),
+    ).toHaveTextContent("OFFICE OF STUDENT LIFE");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-inactive`),
     ).toHaveTextContent("Yes");
 
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent(
-        "KRC",
-      );
     expect(
-        screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-2-col-orgcode`),
+    ).toHaveTextContent("KRC");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-2-col-orgTranslationShort`),
     ).toHaveTextContent("KOREAN RADIO CL");
     expect(
-        screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`),
-        ).toHaveTextContent("KOREAN RADIO CLUB");
+      screen.getByTestId(`${testId}-cell-row-2-col-orgTranslation`),
+    ).toHaveTextContent("KOREAN RADIO CLUB");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -151,17 +164,17 @@ describe("UCSBOrganizationsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent(
-        "SKY",
-      );
     expect(
-    screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
+    ).toHaveTextContent("SKY");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("SKYDIVING CLUB");
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent(
-        "OSLI",
-    );
     expect(
-        screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-1-col-orgcode`),
+    ).toHaveTextContent("OSLI");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`),
     ).toHaveTextContent("STUDENT LIFE");
 
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
@@ -185,11 +198,11 @@ describe("UCSBOrganizationsTable tests", () => {
     );
 
     // assert - check that the expected content is rendered
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent(
-        "SKY",
-      );
     expect(
-    screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
+    ).toHaveTextContent("SKY");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("SKYDIVING CLUB");
 
     const editButton = screen.getByTestId(
@@ -202,7 +215,9 @@ describe("UCSBOrganizationsTable tests", () => {
 
     // assert - check that the navigate function was called with the expected path
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/ucsborganizations/edit/SKY"),  
+      expect(mockedNavigate).toHaveBeenCalledWith(
+        "/ucsborganizations/edit/SKY",
+      ),
     );
   });
 
@@ -228,13 +243,12 @@ describe("UCSBOrganizationsTable tests", () => {
     );
 
     // assert - check that the expected content is rendered
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent(
-        "SKY",
-      );
     expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
+      screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
+    ).toHaveTextContent("SKY");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`),
     ).toHaveTextContent("SKYDIVING CLUB");
-
 
     const deleteButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
