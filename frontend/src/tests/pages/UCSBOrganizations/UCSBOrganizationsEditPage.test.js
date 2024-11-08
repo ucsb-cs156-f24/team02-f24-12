@@ -48,7 +48,9 @@ describe("UCSBOrganizationsEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsborganizations", { params: { orgcode: "ORG" } }).timeout();
+      axiosMock
+        .onGet("/api/ucsborganizations", { params: { orgcode: "ORG" } })
+        .timeout();
     });
 
     const queryClient = new QueryClient();
@@ -63,7 +65,9 @@ describe("UCSBOrganizationsEditPage tests", () => {
         </QueryClientProvider>,
       );
       await screen.findByText("Edit UCSBOrganizations");
-      expect(screen.queryByTestId("UCSBOrganizations-orgcode")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("UCSBOrganizations-orgcode"),
+      ).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,12 +84,14 @@ describe("UCSBOrganizationsEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/ucsborganizations", { params: { orgcode: "ORG" } }).reply(200, {
-        orgcode: "ORG",
-        orgTranslationShort: "Some Org",
-        orgTranslation: "Some Organization",
-        inactive: false,
-      });
+      axiosMock
+        .onGet("/api/ucsborganizations", { params: { orgcode: "ORG" } })
+        .reply(200, {
+          orgcode: "ORG",
+          orgTranslationShort: "Some Org",
+          orgTranslation: "Some Organization",
+          inactive: false,
+        });
       axiosMock.onPut("/api/ucsborganizations").reply(200, {
         orgcode: "ORG",
         orgTranslationShort: "Other Org",
@@ -108,9 +114,15 @@ describe("UCSBOrganizationsEditPage tests", () => {
       await screen.findByTestId("UCSBOrganizationsForm-orgcode");
 
       const orgcodeField = screen.getByTestId("UCSBOrganizationsForm-orgcode");
-      const orgTranslationShortField = screen.getByTestId("UCSBOrganizationsForm-orgTranslationShort");
-      const orgTranslationField = screen.getByTestId("UCSBOrganizationsForm-orgTranslation");
-      const inactiveField = screen.getByTestId("UCSBOrganizationsForm-inactive");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationsForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationsForm-orgTranslation",
+      );
+      const inactiveField = screen.getByTestId(
+        "UCSBOrganizationsForm-inactive",
+      );
       const submitButton = screen.getByTestId("UCSBOrganizationsForm-submit");
 
       expect(orgcodeField).toBeInTheDocument();
@@ -166,9 +178,15 @@ describe("UCSBOrganizationsEditPage tests", () => {
       await screen.findByTestId("UCSBOrganizationsForm-orgcode");
 
       const orgcodeField = screen.getByTestId("UCSBOrganizationsForm-orgcode");
-      const orgTranslationShortField = screen.getByTestId("UCSBOrganizationsForm-orgTranslationShort");
-      const orgTranslationField = screen.getByTestId("UCSBOrganizationsForm-orgTranslation");
-      const inactiveField = screen.getByTestId("UCSBOrganizationsForm-inactive");
+      const orgTranslationShortField = screen.getByTestId(
+        "UCSBOrganizationsForm-orgTranslationShort",
+      );
+      const orgTranslationField = screen.getByTestId(
+        "UCSBOrganizationsForm-orgTranslation",
+      );
+      const inactiveField = screen.getByTestId(
+        "UCSBOrganizationsForm-inactive",
+      );
       const submitButton = screen.getByTestId("UCSBOrganizationsForm-submit");
 
       expect(orgcodeField).toHaveValue("ORG");
@@ -180,7 +198,9 @@ describe("UCSBOrganizationsEditPage tests", () => {
       fireEvent.change(orgTranslationShortField, {
         target: { value: "Other Org" },
       });
-      fireEvent.change(orgTranslationField, { target: { value: "Other Organization" } });
+      fireEvent.change(orgTranslationField, {
+        target: { value: "Other Organization" },
+      });
       fireEvent.change(inactiveField, { target: { value: "true" } });
 
       fireEvent.click(submitButton);

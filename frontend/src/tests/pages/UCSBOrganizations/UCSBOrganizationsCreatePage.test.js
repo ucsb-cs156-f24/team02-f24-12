@@ -71,7 +71,9 @@ describe("UCSBOrganizationsCreatePage tests", () => {
       inactive: "No",
     };
 
-    axiosMock.onPost("/api/ucsborganizations/post").reply(202, ucsbOrganizations);
+    axiosMock
+      .onPost("/api/ucsborganizations/post")
+      .reply(202, ucsbOrganizations);
 
     render(
       <QueryClientProvider client={queryClient}>
@@ -84,11 +86,13 @@ describe("UCSBOrganizationsCreatePage tests", () => {
     await waitFor(() => {
       expect(screen.getByLabelText("orgcode")).toBeInTheDocument();
     });
-      
+
     const orgcodeInput = screen.getByLabelText("orgcode");
 
     expect(orgcodeInput).toBeInTheDocument();
-    const orgTranslationShortInput = screen.getByLabelText("orgTranslationShort");
+    const orgTranslationShortInput = screen.getByLabelText(
+      "orgTranslationShort",
+    );
     expect(orgTranslationShortInput).toBeInTheDocument();
     const orgTranslationInput = screen.getByLabelText("orgTranslation");
     expect(orgTranslationInput).toBeInTheDocument();

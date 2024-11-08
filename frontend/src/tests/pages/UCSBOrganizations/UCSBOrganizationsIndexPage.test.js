@@ -88,31 +88,34 @@ describe("UCSBOrganizationsIndexPage tests", () => {
         screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
       ).toHaveTextContent("SKY");
     });
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-orgcode`)).toHaveTextContent(
-      "OSLI",
-    );
-    expect(screen.getByTestId(`${testId}-cell-row-2-col-orgcode`)).toHaveTextContent(
-      "KRC",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-orgcode`),
+    ).toHaveTextContent("OSLI");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-2-col-orgcode`),
+    ).toHaveTextContent("KRC");
 
-    const createUCSBOrganizationsButton = screen.queryByText("Create Organization");
+    const createUCSBOrganizationsButton = screen.queryByText(
+      "Create Organization",
+    );
     expect(createUCSBOrganizationsButton).not.toBeInTheDocument();
 
     const orgTranslationShort = screen.getByText("STUDENT LIFE");
     expect(orgTranslationShort).toBeInTheDocument();
 
-    const orgTranslation = screen.getByText(
-      "OFFICE OF STUDENT LIFE",
-    );
+    const orgTranslation = screen.getByText("OFFICE OF STUDENT LIFE");
     expect(orgTranslation).toBeInTheDocument();
-    const inactive = screen.getByText(
-      "Yes",
-    );
+    const inactive = screen.getByText("Yes");
     expect(inactive).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(
-      screen.queryByTestId("UCSBOrganizationsTable-cell-row-0-col-Delete-button"),
+      screen.queryByTestId(
+        "UCSBOrganizationsTable-cell-row-0-col-Delete-button",
+      ),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("Create UCSBOrganizations"),
     ).not.toBeInTheDocument();
     expect(
       screen.queryByTestId("UCSBOrganizationsTable-cell-row-0-col-Edit-button"),
@@ -169,9 +172,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
       ).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgcode`)).toHaveTextContent(
-      "SKY",
-    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgcode`),
+    ).toHaveTextContent("SKY");
 
     const deleteButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
@@ -181,7 +184,9 @@ describe("UCSBOrganizationsIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith("Organization with orgcode OSLI was deleted");
+      expect(mockToast).toBeCalledWith(
+        "Organization with orgcode OSLI was deleted",
+      );
     });
 
     await waitFor(() => {
@@ -189,6 +194,6 @@ describe("UCSBOrganizationsIndexPage tests", () => {
     });
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
     expect(axiosMock.history.delete[0].url).toBe("/api/ucsborganizations");
-    expect(axiosMock.history.delete[0].params).toEqual({ orgcode: "SKY"});
+    expect(axiosMock.history.delete[0].params).toEqual({ orgcode: "SKY" });
   });
 });

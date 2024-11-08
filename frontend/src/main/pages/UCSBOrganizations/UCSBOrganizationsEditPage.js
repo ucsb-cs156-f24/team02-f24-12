@@ -32,15 +32,17 @@ export default function UCSBOrganizationsEditPage({ storybook = false }) {
       orgcode: ucsbOrganizations.orgcode,
     },
     data: {
-        orgcode: ucsbOrganizations.orgcode,
-        orgTranslationShort: ucsbOrganizations.orgTranslationShort,
-        orgTranslation: ucsbOrganizations.orgTranslation,
-        inactive: ucsbOrganizations.inactive,
+      orgcode: ucsbOrganizations.orgcode,
+      orgTranslationShort: ucsbOrganizations.orgTranslationShort,
+      orgTranslation: ucsbOrganizations.orgTranslation,
+      inactive: ucsbOrganizations.inactive,
     },
   });
 
   const onSuccess = (ucsbOrganizations) => {
-    toast(`Organization Update - orgcode: ${ucsbOrganizations.orgcode} orgTranslationShort: ${ucsbOrganizations.orgTranslationShort}`);
+    toast(
+      `Organization Update - orgcode: ${ucsbOrganizations.orgcode} orgTranslationShort: ${ucsbOrganizations.orgTranslationShort}`,
+    );
   };
 
   const mutation = useBackendMutation(
