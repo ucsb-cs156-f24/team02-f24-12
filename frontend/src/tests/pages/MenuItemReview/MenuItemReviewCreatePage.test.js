@@ -34,7 +34,7 @@ describe("MenuItemReviewCreatePage tests", () => {
         <MemoryRouter>
           <MenuItemReviewCreatePage />
         </MemoryRouter>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     // assert
