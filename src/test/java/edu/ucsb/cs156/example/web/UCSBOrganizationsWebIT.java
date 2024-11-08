@@ -16,7 +16,7 @@ import edu.ucsb.cs156.example.WebTestCase;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ActiveProfiles("integration")
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
-public class RestaurantWebIT extends WebTestCase {
+public class UCSBOrganizationsWebIT extends WebTestCase {
     @Test
     public void admin_user_can_create_edit_delete_organization() throws Exception {
         setupUser(true);

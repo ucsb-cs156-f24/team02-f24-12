@@ -64,7 +64,7 @@ public class UCSBOrganizationsIT {
                                 .orgcode("OSLI")
                                 .orgTranslationShort("STUDENT LIFE")
                                 .orgTranslation("OFFICE OF STUDENT LIFE")
-                                .inactive("true")
+                                .inactive(true)
                                 .build();
                                 
                 ucsbOrganizationsRepository.save(ucsbOrganizations);
@@ -88,7 +88,7 @@ public class UCSBOrganizationsIT {
                                 .orgcode("ORG")
                                 .orgTranslationShort("Some Org")
                                 .orgTranslation("Some Organization")
-                                .inactive("false")
+                                .inactive(false)
                                 .build();
 
                 // act
