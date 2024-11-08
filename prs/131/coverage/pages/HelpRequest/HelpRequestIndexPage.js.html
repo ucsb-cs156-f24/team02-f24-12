@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/Articles/ArticlesIndexPage.js</title>
+    <title>Code coverage report for pages/HelpRequest/HelpRequestIndexPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/Articles</a> ArticlesIndexPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/HelpRequest</a> HelpRequestIndexPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -109,7 +109,9 @@
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,15 +157,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
 import { useBackend } from "main/utils/useBackend";
 &nbsp;
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import ArticlesTable from "main/components/Articles/ArticlesTable";
+import HelpRequestsTable from "main/components/HelpRequest/HelpRequestTable";
 import { Button } from "react-bootstrap";
 import { useCurrentUser, hasRole } from "main/utils/currentUser";
 &nbsp;
-export default function ArticlesIndexPage() {
+export default function HelpRequestIndexPage() {
   const currentUser = useCurrentUser();
 &nbsp;
   const createButton = () =&gt; {
@@ -171,23 +175,23 @@ export default function ArticlesIndexPage() {
       return (
         &lt;Button
           variant="primary"
-          href="/articles/create"
+          href="/helprequests/create"
           style={{ float: "right" }}
         &gt;
-          Create Articles
+          Create Help Request
         &lt;/Button&gt;
       );
     }
   };
 &nbsp;
   const {
-    data: articles,
+    data: helpRequests,
     error: _error,
     status: _status,
   } = useBackend(
     // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/articles/all"],
-    { method: "GET", url: "/api/articles/all" },
+    ["/api/helprequests/all"],
+    { method: "GET", url: "/api/helprequests/all" },
     [],
   );
 &nbsp;
@@ -195,13 +199,15 @@ export default function ArticlesIndexPage() {
     &lt;BasicLayout&gt;
       &lt;div className="pt-2"&gt;
         {createButton()}
-        &lt;h1&gt;Articles&lt;/h1&gt;
-        &lt;ArticlesTable articles={articles} currentUser={currentUser} /&gt;
+        &lt;h1&gt;Help Requests&lt;/h1&gt;
+        &lt;HelpRequestsTable
+          helpRequests={helpRequests}
+          currentUser={currentUser}
+        /&gt;
       &lt;/div&gt;
     &lt;/BasicLayout&gt;
   );
-}
-&nbsp;</pre></td></tr></table></pre>
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
