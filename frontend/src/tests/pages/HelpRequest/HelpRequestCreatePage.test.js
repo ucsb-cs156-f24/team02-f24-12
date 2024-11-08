@@ -107,7 +107,9 @@ describe("HelpRequestCreatePage tests", () => {
     fireEvent.change(requestTimeField, {
       target: { value: "2022-01-02T12:00" },
     });
-    fireEvent.change(explanationField, { target: { value: "my code is too epic" } });
+    fireEvent.change(explanationField, {
+      target: { value: "my code is too epic" },
+    });
 
     fireEvent.click(solvedField);
     fireEvent.click(solvedField);

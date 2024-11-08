@@ -202,7 +202,9 @@ describe("HelpRequestEditPage tests", () => {
       fireEvent.change(requestTimeField, {
         target: { value: "2023-01-02T12:00" },
       });
-      fireEvent.change(explanationField, { target: { value: "my code is not as epic" } });
+      fireEvent.change(explanationField, {
+        target: { value: "my code is not as epic" },
+      });
       fireEvent.click(solvedField);
 
       fireEvent.click(submitButton);
