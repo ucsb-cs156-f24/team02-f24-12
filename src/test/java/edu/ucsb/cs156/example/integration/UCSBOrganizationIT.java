@@ -36,7 +36,7 @@ import edu.ucsb.cs156.example.testconfig.TestConfig;
 @ActiveProfiles("integration")
 @Import(TestConfig.class)
 @DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
-public class RestaurantIT {
+public class UCSBOrganizationsIT {
         @Autowired
         public CurrentUserService currentUserService;
 

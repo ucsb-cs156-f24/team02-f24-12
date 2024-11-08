@@ -35,11 +35,11 @@ public class RestaurantWebIT extends WebTestCase {
                 .hasText("Some Org");
 
         page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-Edit-button").click();
-        assertThat(page.getByText("Edit Restaurant")).isVisible();
+        assertThat(page.getByText("Edit UCSBOrganizations")).isVisible();
         page.getByTestId("UCSBOrganizationsForm-orgTranslationShort").fill("Other Org");
         page.getByTestId("UCSBOrganizationsForm-submit").click();
 
-        assertThat(page.getByTestId("RestaurantTable-cell-row-0-col-orgTranslationShort")).hasText("Other Org");
+        assertThat(page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-orgTranslationShort")).hasText("Other Org");
 
         page.getByTestId("RestaurantTable-cell-row-0-col-Delete-button").click();
 
