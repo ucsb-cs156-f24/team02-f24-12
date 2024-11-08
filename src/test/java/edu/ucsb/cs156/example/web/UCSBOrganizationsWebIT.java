@@ -21,14 +21,14 @@ public class UCSBOrganizationsWebIT extends WebTestCase {
     public void admin_user_can_create_edit_delete_organization() throws Exception {
         setupUser(true);
 
-        page.getByText("UCSBOrganizations").click();
+        page.getByText("UCSB Organizations").click();
 
         page.getByText("Create UCSBOrganizations").click();
-        assertThat(page.getByText("Create New UCSBOrganizations")).isVisible();
+        assertThat(page.getByText("Create New Organization")).isVisible();
         page.getByTestId("UCSBOrganizationsForm-orgcode").fill("ORG");
         page.getByTestId("UCSBOrganizationsForm-orgTranslationShort").fill("Some Org");
         page.getByTestId("UCSBOrganizationsForm-orgTranslation").fill("Some Organization");
-        page.getByTestId("UCSBOrganizationsForm-inactive").fill("false");
+        page.getByTestId("UCSBOrganizationsForm-inactive").selectOption("No");
         page.getByTestId("UCSBOrganizationsForm-submit").click();
 
         assertThat(page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-orgTranslationShort"))
@@ -41,16 +41,16 @@ public class UCSBOrganizationsWebIT extends WebTestCase {
 
         assertThat(page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-orgTranslationShort")).hasText("Other Org");
 
-        page.getByTestId("RestaurantTable-cell-row-0-col-Delete-button").click();
+        page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-Delete-button").click();
 
-        assertThat(page.getByTestId("RestaurantTable-cell-row-0-col-orgcode")).not().isVisible();
+        assertThat(page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-orgcode")).not().isVisible();
     }
 
     @Test
-    public void regular_user_cannot_create_restaurant() throws Exception {
+    public void regular_user_cannot_create_organization() throws Exception {
         setupUser(false);
 
-        page.getByText("UCSBOrganizations").click();
+        page.getByText("UCSB Organizations").click();
 
         assertThat(page.getByText("Create UCSBOrganizations")).not().isVisible();
         assertThat(page.getByTestId("UCSBOrganizationsTable-cell-row-0-col-orgcode")).not().isVisible();

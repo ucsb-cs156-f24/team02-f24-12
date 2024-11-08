@@ -93,7 +93,7 @@ public class UCSBOrganizationsIT {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/ucsborganizations/post?orgTranslationShort=Some Org&orgTranslation=Some Organization&inactive=false")
+                                post("/api/ucsborganizations/post?orgcode=ORG&orgTranslationShort=Some Org&orgTranslation=Some Organization&inactive=false")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
