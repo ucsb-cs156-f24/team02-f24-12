@@ -72,7 +72,6 @@ describe("UserTable tests", () => {
       `${testId}-cell-row-0-col-Edit-button`,
     );
     expect(editButton).not.toBeInTheDocument();
-    
 
     const deleteButton = screen.queryByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
