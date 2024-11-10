@@ -124,6 +124,6 @@ describe("MenuItemReview 'Create' Page tests", () => {
     expect(mockToast).toBeCalledWith(
       "New menu item review Created - id: 2 reviewer email: sj@gmail.com",
     );
-    expect(mockNavigate).toBeCalledWith({ to: "/menuItemReviews" });
+    expect(mockNavigate).toBeCalledWith({ to: "/menuItemReview" });
   });
 });
