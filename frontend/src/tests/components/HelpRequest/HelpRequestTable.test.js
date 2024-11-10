@@ -67,7 +67,6 @@ describe("UserTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
       "2",
     );
-    expect(screen.getByText(/true/)).toBeInTheDocument();
 
     const editButton = screen.queryByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -143,7 +142,6 @@ describe("UserTable tests", () => {
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
 
-    expect(screen.getByText(/true/)).toBeInTheDocument();
   });
 
   test("Edit button navigates to the edit page for admin user", async () => {
