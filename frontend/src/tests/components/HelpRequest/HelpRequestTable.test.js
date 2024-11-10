@@ -141,7 +141,6 @@ describe("UserTable tests", () => {
     );
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
-
   });
 
   test("Edit button navigates to the edit page for admin user", async () => {
