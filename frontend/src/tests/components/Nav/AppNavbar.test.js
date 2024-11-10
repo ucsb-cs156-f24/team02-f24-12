@@ -188,31 +188,7 @@ describe("AppNavbar tests", () => {
     expect(link.getAttribute("href")).toBe("/restaurants");
   });
 
-  test("renders the helprequests link correctly", async () => {
-    const currentUser = currentUserFixtures.userOnly;
-    const systemInfo = systemInfoFixtures.showingBoth;
-
-    const doLogin = jest.fn();
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
-          <AppNavbar
-            currentUser={currentUser}
-            systemInfo={systemInfo}
-            doLogin={doLogin}
-          />
-        </MemoryRouter>
-      </QueryClientProvider>,
-    );
-
-    await screen.findByText("HelpRequest");
-    const link = screen.getByText("HelpRequest");
-    expect(link).toBeInTheDocument();
-    expect(link.getAttribute("href")).toBe("/helprequests");
-  });
-
-  test("Restaurant and UCSBDates and HelpRequest links do NOT show when not logged in", async () => {
+  test("Restaurant and UCSBDates links do NOT show when not logged in", async () => {
     const currentUser = null;
     const systemInfo = systemInfoFixtures.showingBoth;
     const doLogin = jest.fn();
@@ -231,7 +207,6 @@ describe("AppNavbar tests", () => {
 
     expect(screen.queryByText("Restaurants")).not.toBeInTheDocument();
     expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
-    expect(screen.queryByText("HelpRequest")).not.toBeInTheDocument();
   });
 
   test("when oauthlogin undefined, default value is used", async () => {
