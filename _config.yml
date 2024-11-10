@@ -20,4 +20,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f24/team02-f24-12
 owner: ucsb-cs156-f24
 repo_name: team02-f24-12
-pull_requests: [{"author":{"id":"U_kgDOB8qFRw","is_bot":false,"login":"Abby-Fan04","name":""},"headRefName":"abby-team03","number":135,"title":"Abby team03 testsss","url":"https://github.com/ucsb-cs156-f24/team02-f24-12/pull/135"},{"author":{"id":"MDQ6VXNlcjMwNjMzMDE5","is_bot":false,"login":"mayarosenbaum","name":""},"headRefName":"maya-helpRequestForms","number":131,"title":"mr - added help request table and tests, pages and tests","url":"https://github.com/ucsb-cs156-f24/team02-f24-12/pull/131"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjMwNjMzMDE5","is_bot":false,"login":"mayarosenbaum","name":""},"headRefName":"maya-helpRequestForms","number":131,"title":"mr - added help request table and tests, pages and tests","url":"https://github.com/ucsb-cs156-f24/team02-f24-12/pull/131"}]
