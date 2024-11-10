@@ -91,7 +91,7 @@ function App() {
             <Route
               exact
               path="/helprequests/edit/:id"
-              element={<RestaurantEditPage />}
+              element={<HelpRequestEditPage />}
             />
             <Route
               exact
