@@ -58,7 +58,6 @@ export default function HelpRequestTable({ helpRequests, currentUser }) {
     {
       Header: "Solved",
       id: "solved",
-      Cell: ({ cell }) => cell.row.original.solved.toString(),
     },
   ];
 
