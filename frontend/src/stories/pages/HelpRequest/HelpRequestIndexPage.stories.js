@@ -1,7 +1,7 @@
 import React from "react";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { helpRequestsFixtures } from "fixtures/helpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 import { http, HttpResponse } from "msw";
 
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
@@ -42,8 +42,8 @@ ThreeItemsOrdinaryUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/HelpRequests/all", () => {
-      return HttpResponse.json(helpRequestsFixtures.threeRequests);
+    http.get("/api/helprequests/all", () => {
+      return HttpResponse.json(helpRequestFixtures.threeHelpRequests);
     }),
   ],
 };
@@ -58,12 +58,11 @@ ThreeItemsAdminUser.parameters = {
     http.get("/api/systemInfo", () => {
       return HttpResponse.json(systemInfoFixtures.showingNeither);
     }),
-    http.get("/api/HelpRequests/all", () => {
-      return HttpResponse.json(helpRequestsFixtures.threeRequests);
+    http.get("/api/helprequests/all", () => {
+      return HttpResponse.json(helpRequestFixtures.threeRequests);
     }),
-    http.delete("/api/HelpRequests", () => {
-      return HttpResponse.json(
-        { message: "HelpRequest deleted successfully" },
+    http.delete("/api/helprequests", () => {
+      return HttpResponse.json({}, 
         { status: 200 },
       );
     }),

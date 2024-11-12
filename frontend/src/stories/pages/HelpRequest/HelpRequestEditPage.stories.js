@@ -4,7 +4,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
 
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
-import { helpRequestsFixtures } from "fixtures/helpRequestFixtures";
+import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
 
 export default {
   title: "pages/HelpRequest/HelpRequestEditPage",
@@ -27,15 +27,14 @@ Default.parameters = {
       });
     }),
     http.get("/api/helprequests", () => {
-      return HttpResponse.json(helpRequestsFixtures.threeRequests[0], {
+      return HttpResponse.json(helpRequestFixtures.threeHelpRequests[0], {
         status: 200,
       });
     }),
     http.put("/api/helprequests", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
-    http.put("/api/helprequests", (req) => {
-      window.alert("PUT: " + req.url + " and body: " + req.body);
+    http.put("/api/helprequests", () => {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],
