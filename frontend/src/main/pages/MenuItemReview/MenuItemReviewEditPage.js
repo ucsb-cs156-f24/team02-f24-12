@@ -60,7 +60,7 @@ export default function MenuItemReviewEditPage({ storybook = false }) {
   };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/menuitemreviews" />;
+    return <Navigate to="/menuitemreview" />;
   }
 
   return (
