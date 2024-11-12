@@ -153,7 +153,7 @@ describe("Menu Item Review 'Edit' Page tests", () => {
         "Menu Item Review Updated - id: 1 Reviewer Email: No One",
       );
 
-      expect(mockNavigate).toBeCalledWith({ to: "/menuitemreviews" });
+      expect(mockNavigate).toBeCalledWith({ to: "/menuitemreview" });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
       expect(axiosMock.history.put[0].params).toEqual({ id: 1 });
@@ -217,7 +217,7 @@ describe("Menu Item Review 'Edit' Page tests", () => {
       expect(mockToast).toBeCalledWith(
         "Menu Item Review Updated - id: 1 Reviewer Email: No One",
       );
-      expect(mockNavigate).toBeCalledWith({ to: "/menuitemreviews" });
+      expect(mockNavigate).toBeCalledWith({ to: "/menuitemreview" });
     });
   });
 });
