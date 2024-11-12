@@ -62,9 +62,7 @@ ThreeItemsAdminUser.parameters = {
       return HttpResponse.json(helpRequestFixtures.threeRequests);
     }),
     http.delete("/api/helprequests", () => {
-      return HttpResponse.json({}, 
-        { status: 200 },
-      );
+      return HttpResponse.json({}, { status: 200 });
     }),
   ],
 };
