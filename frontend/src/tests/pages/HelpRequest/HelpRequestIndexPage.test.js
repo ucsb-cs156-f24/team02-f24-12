@@ -64,9 +64,9 @@ describe("HelpRequestIndexPage tests", () => {
 
     // assert
     await waitFor(() => {
-      expect(screen.getByText(/Create Help Request/)).toBeInTheDocument();
+      expect(screen.getByText(/Create HelpRequest/)).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create Help Request/);
+    const button = screen.getByText(/Create HelpRequest/);
     expect(button).toHaveAttribute("href", "/helprequests/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
@@ -102,7 +102,7 @@ describe("HelpRequestIndexPage tests", () => {
     );
 
     // assert that the Create button is not present when user isn't an admin
-    expect(screen.queryByText(/Create Help Request/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Create HelpRequest/)).not.toBeInTheDocument();
   });
 
   test("renders empty table when backend unavailable, user only", async () => {
