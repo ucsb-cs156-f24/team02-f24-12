@@ -17,7 +17,7 @@ export default function HelpRequestIndexPage() {
           href="/helprequests/create"
           style={{ float: "right" }}
         >
-          Create Help Request
+          Create HelpRequest
         </Button>
       );
     }
@@ -38,7 +38,7 @@ export default function HelpRequestIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>Help Requests</h1>
+        <h1>HelpRequests</h1>
         <HelpRequestTable
           helpRequests={helpRequests}
           currentUser={currentUser}
