@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import edu.ucsb.cs156.example.entities.MenuItemReview;
 
 @Repository
-public interface MenuItemsReviewRepository extends CrudRepository<MenuItemReview, Long> {
+public interface MenuItemReviewRepository extends CrudRepository<MenuItemReview, Long> {
     
 }
 
