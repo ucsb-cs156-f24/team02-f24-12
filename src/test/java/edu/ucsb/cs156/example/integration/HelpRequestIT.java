@@ -1,4 +1,4 @@
-ackage edu.ucsb.cs156.example.integration;
+package edu.ucsb.cs156.example.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,6 +29,7 @@ import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.services.CurrentUserService;
 import edu.ucsb.cs156.example.services.GrantedAuthoritiesService;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
+import java.time.LocalDateTime;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -60,13 +61,13 @@ public class HelpRequestIT {
         public void test_that_logged_in_user_can_get_by_id_when_the_id_exists() throws Exception {
                 // arrange
 
-                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt = LocalDateTime.parse("2022-01-03T00:00");
 
                 HelpRequest helpRequest = HelpRequest.builder()
                                 .requesterEmail("mayarosenbaum@ucsb.edu")
                                 .teamId("12")
                                 .tableOrBreakoutRoom("table")
-                                .requestTime(ldt1)
+                                .requestTime(ldt)
                                 .explanation("explanation")
                                 .solved(true)
                                 .build();
@@ -88,13 +89,13 @@ public class HelpRequestIT {
         public void an_admin_user_can_post_a_new_restaurant() throws Exception {
                 // arrange
 
-                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt = LocalDateTime.parse("2022-01-03T00:00");
 
                 HelpRequest helpRequest = HelpRequest.builder()
                                 .requesterEmail("mayarosenbaum@ucsb.edu")
                                 .teamId("12")
                                 .tableOrBreakoutRoom("table")
-                                .requestTime(ldt1)
+                                .requestTime(ldt)
                                 .explanation("explanation")
                                 .solved(true)
                                 .build();
