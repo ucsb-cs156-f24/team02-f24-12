@@ -36,8 +36,6 @@ public class HelpRequestWebIT extends WebTestCase {
 
         page.getByTestId("HelpRequestForm-submit").click();
 
-        page.waitForSelector("[data-testid='HelpRequestTable-cell-row-0-col-requesterEmail']");
-
         assertThat(page.getByTestId("HelpRequestTable-cell-row-0-col-requesterEmail"))
                 .hasText("mayarosenbaum@ucsb.edu");
 
