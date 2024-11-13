@@ -32,8 +32,8 @@ public class HelpRequestWebIT extends WebTestCase {
         page.getByTestId("HelpRequestForm-explanation").fill("explanation");
         page.getByTestId("HelpRequestForm-teamId").fill("12");
         page.getByTestId("HelpRequestForm-tableOrBreakoutRoom").fill("table");
-        page.getByTestId("HelpRequestForm-solved").selectOption("true");
-
+        page.getByTestId("HelpRequestForm-solved").check();
+        
         page.getByTestId("HelpRequestForm-submit").click();
 
         assertThat(page.getByTestId("HelpRequestTable-cell-row-0-col-requesterEmail"))
