@@ -102,13 +102,7 @@ public class HelpRequestIT {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                post("/api/helprequests/post")
-                                .param("requesterEmail", "mayarosenbaum@ucsb.edu")
-                                .param("teamId", "12")
-                                .param("tableOrBreakoutRoom", "table")
-                                .param("requestTime", "2022-01-03T00:00:00")
-                                .param("explanation", "explanation")
-                                .param("solved", "true")
+                                post("/api/helprequests/post?requesterEmail=mayarosenbaum@ucsb.edu&teamId=12&tableOrBreakoutRoom=table09&explanation=explanation&solved=true&requestTime=2022-01-03T00:00")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
