@@ -76,7 +76,7 @@ public class HelpRequestIT {
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                get("/api/helprequests/post?requesterEmail=mayarosenbaum@ucsb.edu&teamId=12&tableOrBreakoutRoom=table&explanation=explanation&solved=true&requestTime=2022-01-03T00:00"))
+                                get("/api/helprequests?id=1"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
