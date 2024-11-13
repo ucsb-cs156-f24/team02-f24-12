@@ -4,7 +4,7 @@ import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
 import edu.ucsb.cs156.example.ControllerTestCase;
 import edu.ucsb.cs156.example.entities.MenuItemReview;
-import edu.ucsb.cs156.example.repositories.MenuItemsReviewRepository;
+import edu.ucsb.cs156.example.repositories.MenuItemReviewRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,7 @@ import static org.mockito.Mockito.when;
 public class MenuItemReviewControllerTests extends ControllerTestCase {
 
     @MockBean
-    MenuItemsReviewRepository menuItemsReviewRepository;
+    MenuItemReviewRepository menuItemsReviewRepository;
 
     @MockBean
     UserRepository userRepository;

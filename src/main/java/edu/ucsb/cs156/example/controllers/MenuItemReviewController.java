@@ -2,7 +2,7 @@ package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.entities.MenuItemReview;
 import edu.ucsb.cs156.example.errors.EntityNotFoundException;
-import edu.ucsb.cs156.example.repositories.MenuItemsReviewRepository;
+import edu.ucsb.cs156.example.repositories.MenuItemReviewRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -35,7 +35,7 @@ public class MenuItemReviewController extends ApiController {
     //please take into account id is the primary key of the entity and then the other fields
 
     @Autowired
-    MenuItemsReviewRepository menuItemsReviewRepository;
+    MenuItemReviewRepository menuItemsReviewRepository;
 
     /**
      * List all MenuItemReview
